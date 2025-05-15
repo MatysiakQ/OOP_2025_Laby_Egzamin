@@ -1,0 +1,29 @@
+
+
+🔹 W3Schools Java
+https://www.w3schools.com/java/
+
+🔹 Programiz Java
+https://www.programiz.com/java-programming
+
+🔹 Baeldung Java
+https://www.baeldung.com/
+
+🧰 Do konkretnych problemów – gotowe snippetowe strony:
+
+🔸 StackOverflow (tag Java)
+https://stackoverflow.com/questions/tagged/java
+
+🔸 GeeksForGeeks Java
+https://www.geeksforgeeks.org/java/
+
+🔸 Java2s
+https://www.java2s.com/
+
+
+
+🔎 Protip do Googlowania:
+Wyszukuj tak:
+    java nazwa_temu site:w3schools.com
+    java stream sort comparator site:baeldung.com
+    java TreeMap site:geeksforgeeks.org
