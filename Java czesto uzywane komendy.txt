@@ -1,0 +1,84 @@
+
+📌 NAJCZĘŚCIEJ UŻYWANE FRAGMENTY KODU W JAVIE (do kolosa i nie tylko)
+
+-------------------------------------------------
+🔹 1. Czytanie pliku linia po linii
+-------------------------------------------------
+try (BufferedReader reader = new BufferedReader(new FileReader("plik.csv"))) {
+    String line;
+    while ((line = reader.readLine()) != null) {
+        // Przetwarzanie jednej linii
+        System.out.println(line);
+    }
+} catch (IOException e) {
+    e.printStackTrace();
+}
+
+-------------------------------------------------
+🔹 2. Parsowanie liczby z tekstu
+-------------------------------------------------
+int liczba = Integer.parseInt("123"); // UWAGA: może rzucić NumberFormatException
+
+-------------------------------------------------
+🔹 3. Rozdzielanie danych z CSV
+-------------------------------------------------
+String linia = "J12	120	3	5	7";
+String[] dane = linia.split("\t"); // Tabulator jako separator
+
+-------------------------------------------------
+🔹 4. Definicja klasy z getterem i konstruktorem
+-------------------------------------------------
+public class Osoba {
+    private String imie;
+
+    public Osoba(String imie) {
+        this.imie = imie;
+    }
+
+    public String getImie() {
+        return imie;
+    }
+}
+
+-------------------------------------------------
+🔹 5. Użycie ArrayList i dodawanie elementów
+-------------------------------------------------
+List<String> lista = new ArrayList<>();
+lista.add("element");
+System.out.println(lista.get(0)); // Wyświetla "element"
+
+-------------------------------------------------
+🔹 6. Sortowanie listy po własnym kryterium
+-------------------------------------------------
+lista.sort((a, b) -> a.compareTo(b)); // lub np. porównanie liczby zgonów
+
+-------------------------------------------------
+🔹 7. Sprawdzanie wzorca (regex)
+-------------------------------------------------
+if (kod.matches("^[A-Z][0-9]{2}.*$")) {
+    System.out.println("Poprawny kod ICD-10");
+}
+
+-------------------------------------------------
+🔹 8. Własna klasa z toString()
+-------------------------------------------------
+@Override
+public String toString() {
+    return "Kod: " + this.kod;
+}
+
+-------------------------------------------------
+🔹 9. Obsługa wyjątków
+-------------------------------------------------
+try {
+    // Kod mogący rzucić wyjątek
+} catch (Exception e) {
+    e.printStackTrace(); // lub: System.out.println(e.getMessage());
+}
+
+-------------------------------------------------
+🔹 10. Wczytywanie danych z konsoli (Scanner)
+-------------------------------------------------
+Scanner scanner = new Scanner(System.in);
+String wejscie = scanner.nextLine();
+int liczba = scanner.nextInt();
