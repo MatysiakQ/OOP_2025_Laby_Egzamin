@@ -82,3 +82,10 @@ try {
 Scanner scanner = new Scanner(System.in);
 String wejscie = scanner.nextLine();
 int liczba = scanner.nextInt();
+
+
+Metoda	Opis
+toString()	Zwraca tekstową reprezentację obiektu (NazwaKlasy@hashcode)	
+equals(Object obj)	Porównuje obiekty (domyślnie: porównanie referencji) 
+hashCode()	Zwraca hash obiektu, powiązany z equals()	
+Do tych dodajemy override
