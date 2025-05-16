@@ -84,8 +84,16 @@ String wejscie = scanner.nextLine();
 int liczba = scanner.nextInt();
 
 
-Metoda	Opis
-toString()	Zwraca tekstową reprezentację obiektu (NazwaKlasy@hashcode)	
-equals(Object obj)	Porównuje obiekty (domyślnie: porównanie referencji) 
-hashCode()	Zwraca hash obiektu, powiązany z equals()	
-Do tych dodajemy override
+Nazwa	Co to robi?	Wymagania/importy
+setTime(...)	Ustawia czas zegara na konkretną godzinę, minutę i sekundę. Może zawierać walidację zakresów.	Własna metoda
+parseFile(...)	Wczytuje dane z pliku (np. CSV), przetwarza linia po linii i zwraca np. listę/Mapę obiektów.	import java.io.* + metody plikowe
+setCurrentTime()	Ustawia czas na aktualny systemowy (LocalTime.now())	import java.time.LocalTime
+toSvg()	Zwraca napis zawierający kod SVG do narysowania np. tarczy zegara lub wskazówki.	import java.io.* jeśli zapis do pliku
+localMeanTime()	Oblicza lokalny czas miejscowy na podstawie długości geograficznej miasta.	import java.time.LocalTime + obliczenia
+generateAnalogClocksSvg(...)	Tworzy pliki SVG z tarczami zegarów dla listy miast, każdy z aktualnym czasem.	import java.io.*, List<City>
+enum	Definiuje zbiór stałych wartości (np. HOUR12, HOUR24). Stosowany do przełączników i opcji.	Własna definicja, np.: enum Mode { HOUR12, HOUR24 }
+try-catch	Obsługuje wyjątki (błędy w czasie działania programu), np. podczas czytania pliku.	import java.io.IOException, Exception
+List<T>	Dynamiczna lista (np. ArrayList), przechowuje wiele obiektów w kolejności.	import java.util.List, ArrayList
+Map<K, V>	Słownik, przechowuje dane jako pary klucz–wartość, np. "Warszawa" → City	import java.util.Map, HashMap
+LocalTime	Klasa reprezentująca czas (godzina:minuta:sekunda) bez daty.	import java.time.LocalTime
+BufferedReader / FileReader	Klasy do czytania plików tekstowych linia po linii.	import java.io.*
