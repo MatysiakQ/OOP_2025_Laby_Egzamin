@@ -1,0 +1,79 @@
+## Co to jest toSvg()
+
+`toSvg()` to metoda, która generuje grafikę zegara w formacie SVG (Scalable Vector Graphics).
+
+---
+
+### Zastosowanie
+
+* W klasie `AnalogClock` generuje **cały zegar**: tarczę + wskazówki.
+* W klasach dziedziczących po `ClockHand` (czyli `HourHand`, `MinuteHand`, `SecondHand`) generuje **jedną wskazówkę** jako linię SVG.
+
+---
+
+### Co to jest SVG?
+
+SVG to XML-owy format grafiki wektorowej. Działa w przeglądarkach.
+
+Przykładowy kod SVG:
+
+```xml
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="100" cy="100" r="90" stroke="black" stroke-width="4" fill="white"/>
+  <line x1="100" y1="100" x2="100" y2="30" stroke="black" stroke-width="2"/>
+</svg>
+```
+
+---
+
+### Jak działa toSvg w zegarze?
+
+#### 1. `AnalogClock.toSvg()`
+
+* Tworzy napis `StringBuilder`, dodaje:
+
+  * znacznik `<svg>`,
+  * tarczę: `<circle ... />`,
+  * wskazówki z `hand.toSvg()` (dla każdej z 3),
+  * zamyka `</svg>`.
+* Zapisuje do pliku `.svg`.
+
+#### 2. `ClockHand.toSvg()`
+
+Każda wskazówka:
+
+* ma pole `angle` (kąt w stopniach), ustawiane w `setTime()` na podstawie `LocalTime`.
+* zwraca kod `<line>` z transformacją `rotate()`.
+
+Przykład:
+
+```xml
+<line x1="100" y1="100" x2="100" y2="20" stroke="red" stroke-width="1" transform="rotate(90 100 100)" />
+```
+
+---
+
+### Objaśnienie atrybutów SVG:
+
+| Atrybut        | Znaczenie                                             |
+| -------------- | ----------------------------------------------------- |
+| `x1`, `y1`     | Punkt początkowy linii (centrum zegara)               |
+| `x2`, `y2`     | Punkt końcowy (przed obrotem)                         |
+| `stroke`       | Kolor linii                                           |
+| `stroke-width` | Grubość linii                                         |
+| `transform`    | Obrót wokół punktu 100,100 o zadany kąt (w stopniach) |
+
+---
+
+### Przykładowe kąty dla czasu 3:15:45:
+
+* **Godzina**: `3 * 30 + 15/60 * 30` = 97.5°
+* **Minuta**: `15 * 6 + 45/60 * 6` = 93°
+* **Sekunda**: `45 * 6` = 270°
+
+---
+
+
+* `toSvg()` tworzy obraz zegara jako tekst w formacie SVG.
+* Każda wskazówka zwraca linię SVG z obrotem.
+* Kod SVG można zapisać i otworzyć w przeglądarce jako grafikę zegara.
